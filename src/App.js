@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import {NewTaskForm} from './Components/NewTaskForm';
+import {TasksList} from './Components/TasksList';
+import {REE_DATA} from './Components/REE_DATA';
 
 function App() {
+  const style = {height: '100%'};
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container" style={style}>
+      <div className="row" style={style}>
+        <NewTaskForm/>
+        <TasksList/>
+        <REE_DATA/>
+      </div>
     </div>
   );
 }
