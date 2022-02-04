@@ -19,7 +19,7 @@ export const TasksList = (token) => {
         getTasks();
     }, []);
 
-    return <div className="col-5">
+    return <div className="col-12 col-md-5 mt-3">
     {tasks.map((task) => {
         return(
             <article key={task._id} className="card">
