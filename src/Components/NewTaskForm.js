@@ -29,7 +29,7 @@ export const NewTaskForm = () => {
     };
 
     return (
-        <div className="col-md-3 d-flex flex-column justify-content-center">
+        <div className="col-lg-3 d-flex flex-column justify-content-center">
             <form className="form needs-validation" onSubmit={(e) => sendTask(e)}>
                 <div className="form-control d-flex flex-column">
 
