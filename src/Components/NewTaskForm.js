@@ -20,14 +20,12 @@ export const NewTaskForm = () => {
             "content": document.getElementById('content').value
         }
         
-        const res = await fetch(url, {
+        await fetch(url, {
                 method: 'POST',
                 headers: postHeaders,
                 body: JSON.stringify(data),
                 redirect: 'follow'
-            });
-
-            console.log(res);
+        });
     };
 
     return (
