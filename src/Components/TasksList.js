@@ -4,6 +4,7 @@ import {TaskItem} from './TaskItem';
 export const TasksList = (item) => {
     const [tasks, setTasks] = useState([]);
     const [edit, setEdit] = useState(false);
+    const [, setChange] = useState(true);
 
     useEffect(() => {
         const myStorage = window.localStorage;
@@ -25,17 +26,11 @@ export const TasksList = (item) => {
         setEdit(false);
     }, [edit, item]);
 
-    const setChangeCompleted = (completed) => {
-        setEdit(completed);
-    }
-
     return (
-        <div className="col-lg-5 mt-3">
+        <div key={'taskList'} className="col-lg-5 mt-3">
         {tasks.map((task, index) => {
             return(
-                <>
-                    <TaskItem key={index.toString() + "tasksList"} task={task} index={index} setEdit={setChangeCompleted}/>
-                </>
+                <TaskItem key={task._id} task={task} index={index} setChange={setChange} setEdit={setEdit}/>
             );
         })}
         </div>

@@ -41,7 +41,7 @@ export const TaskItemEdit = (task) => {
         task.setChange(true)
     }
 
-    return <div key={task._id + 'itemEdit'} className="d-flex flex-column justify-content-center">
+    return <div key={task._id + 'itemEdit'} className="d-flex flex-column justify-content-center mb-3">
     <form className="form needs-validation" onSubmit={(e) => sendTask(e, task.index)}>
         <div className="form-control d-flex flex-column">
 

@@ -10,16 +10,28 @@ import {Footer} from './Footer';
 
 
 function MainPage() {
-  const myStorage = window.localStorage;
+  const [name, setName] = useState('');
   const navigate = useNavigate();
-  const name = myStorage.getItem('name');
-  
+
   useEffect(() => {
-    
-    if(!(myStorage.getItem('token')) && !(name)){
-      navigate('/login');
+    const checkLogIn = () => {
+      const myStorage = window.localStorage;
+
+      const user = {
+        name: myStorage.getItem('name'),
+        token: myStorage.getItem('token')
+      }
+      
+      if(!user.token && !user.name){
+        navigate('/login');
+      }
+
+      setName(user.name);
     }
-  }, []);
+
+    checkLogIn();
+    
+  }, [navigate]);
   
 
   const style = {height: '100%'};
