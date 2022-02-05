@@ -13,7 +13,7 @@ export const Login = () => {
 
     return (
     <div style={style} className="container">
-        <div style={style} className='d-flex  align-items-center'>
+        <div style={style} className='col-12 d-flex  align-items-center'>
             {login && <Enter changeToRegister={changeToComponent}/>}
             {!login && <Register changeToLogin={changeToComponent}/>}
         </div>

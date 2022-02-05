@@ -15,19 +15,20 @@ export const Menu = (name) => {
 
     return(
         <nav style={style} className="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between">
-            <span className="text-light fs-5 ms-lg-3">Plan Your Time</span>
+            <span className="text-light fs-5 ms-lg-3 ms-2">Plan Your Time</span>
 
-            <ul className="navbar-nav me-lg-3">
-                <li className="nav-item mt-2 text-light">Welcome, {name.name}</li>
+            <ul className="navbar-nav me-lg-3 list-group list-group-horizontal">
+                <li className="nav-item mt-2 text-light d-none d-lg-block">Welcome, {name.name}</li>
 
                 <li className="nav-item">
                     <Link className="nav-link" to="/login">Login</Link>
                 </li>
 
-                <li className="nav-item mt-2 text-light">
+                <li className="nav-item mt-2 text-light m-3 ms-lg-1 me-lg-1">
                     |
                 </li>
-                <li className="nav-item">
+
+                <li className="nav-item me-2">
                     <button className="btn btn-link nav-link" onClick={logOut}>Log Out</button>
                 </li>
             </ul>

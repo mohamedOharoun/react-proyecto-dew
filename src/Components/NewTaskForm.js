@@ -33,13 +33,13 @@ export const NewTaskForm = (item) => {
     };
 
     return (
-        <div className="col-lg-3 d-flex flex-column justify-content-center">
+        <div className="col-lg-3 d-flex flex-column justify-content-center mt-3">
             <form id="formNewTask" className="form needs-validation" onSubmit={(e) => sendTask(e)}>
                 <div className="form-control d-flex flex-column">
 
                     <div className="d-flex flex-column">
                         <label htmlFor="name" className="form-label align-self-center">Name</label>
-                        <input className="form-control" type="text" id="name" name="name" minLength={3}/>
+                        <input className="form-control" type="text" id="name" name="name" minLength={3} autoComplete="off"/>
                         <div className="invalid-feedback">It can only be 250 characters long</div>
                     </div>
 

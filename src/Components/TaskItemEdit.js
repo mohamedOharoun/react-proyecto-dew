@@ -47,7 +47,7 @@ export const TaskItemEdit = (task) => {
 
             <div className="d-flex flex-column">
                 <label htmlFor="name" className="form-label align-self-center">Name</label>
-                <input className="form-control" type="text" id={"nameEdit" + task.index} name="name" minLength={3} value={name} onChange={e => setName(e.target.value)}/>
+                <input className="form-control" type="text" id={"nameEdit" + task.index} name="name" minLength={3} value={name} onChange={e => setName(e.target.value)} autoComplete="off"/>
                 <div className="invalid-feedback">It can only be 250 characters long</div>
             </div>
 

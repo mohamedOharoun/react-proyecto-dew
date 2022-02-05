@@ -46,7 +46,7 @@ export const Enter = (changeComponent) => {
     return (
         
         <div style={style} className="col-12 d-flex flex-column justify-content-center align-items-center">
-            <form id="formNewTask" className="col-6 form needs-validation justify-content-cent align-items-center" onSubmit={(e) => logInUser(e)}>
+            <form id="formNewTask" className="col-11 col-sm-6 form needs-validation justify-content-cent align-items-center" onSubmit={(e) => logInUser(e)}>
                 <div className="form-control d-flex flex-column justify-content-center align-items-center">
     
                     <div className="mb-3 col-8 mt-5">
