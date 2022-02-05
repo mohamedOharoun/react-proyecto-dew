@@ -1,13 +1,15 @@
 import { useState } from "react";
 import {TaskItemEdit} from './TaskItemEdit';
 export const TaskItem = (task, index) => {
+    const myStorage = window.localStorage;
+
     const [change, setChange] = useState(true);
 
     const changeCompleted = async (completed, index, id) => {
         const url = 'http://localhost:3030/api/v1/tasks/' + id;
 
         const postHeaders = new Headers();
-        postHeaders.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWY2Y2Y2MjQ5ZGYzOGY0OGI0ODNmZjYiLCJuYW1lIjoiVXNlciA1IiwiaWF0IjoxNjQzNTY3MDY1LCJleHAiOjE2NDYxNTkwNjV9._fD8BVug_dBIunfkKNKx5mglbLqG5_32SgNUCB-ceOs');
+        postHeaders.append('Authorization', 'Bearer ' + myStorage.getItem('token'));
         postHeaders.append('Content-type', 'application/json');
 
         const data = {
@@ -28,7 +30,7 @@ export const TaskItem = (task, index) => {
         const url = 'http://localhost:3030/api/v1/tasks/' + id;
 
         const postHeaders = new Headers();
-        postHeaders.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWY2Y2Y2MjQ5ZGYzOGY0OGI0ODNmZjYiLCJuYW1lIjoiVXNlciA1IiwiaWF0IjoxNjQzNTY3MDY1LCJleHAiOjE2NDYxNTkwNjV9._fD8BVug_dBIunfkKNKx5mglbLqG5_32SgNUCB-ceOs');
+        postHeaders.append('Authorization', 'Bearer '+ myStorage.getItem('token'));
         
         await fetch(url, {
                 method: 'DELETE',
@@ -60,7 +62,7 @@ export const TaskItem = (task, index) => {
                
             </article>)}
 
-            {!change && (<TaskItemEdit key={task.task.index} task={task.task} setEdit={task.setEdit} setChange={setChange}/>)}
+            {!change && (<TaskItemEdit key={task.task._id} task={task.task} setEdit={task.setEdit} setChange={setChange}/>)}
         </>
     );
 }

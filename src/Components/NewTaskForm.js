@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-export const NewTaskForm = () => {
-    const maxChars = 250;
+export const NewTaskForm = (item) => {
+    const myStorage = window.localStorage;
+    const maxChars = 125;
     const [counter, setCounter] = useState(0);
     const [isInValid, setIsInValid] = useState(false);
 
@@ -11,7 +12,7 @@ export const NewTaskForm = () => {
         const url = 'http://localhost:3030/api/v1/tasks';
 
         const postHeaders = new Headers();
-        postHeaders.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWY2Y2Y2MjQ5ZGYzOGY0OGI0ODNmZjYiLCJuYW1lIjoiVXNlciA1IiwiaWF0IjoxNjQzNTY3MDY1LCJleHAiOjE2NDYxNTkwNjV9._fD8BVug_dBIunfkKNKx5mglbLqG5_32SgNUCB-ceOs');
+        postHeaders.append('Authorization', 'Bearer ' + myStorage.getItem('token'));
         postHeaders.append('Content-type', 'application/json');
 
 
@@ -25,12 +26,15 @@ export const NewTaskForm = () => {
                 headers: postHeaders,
                 body: JSON.stringify(data),
                 redirect: 'follow'
-        });
+        })
+        .then(() => item.addItem())
+        .then(() => document.getElementById('formNewTask').reset())
+        .catch(err => console.log(err));
     };
 
     return (
         <div className="col-lg-3 d-flex flex-column justify-content-center">
-            <form className="form needs-validation" onSubmit={(e) => sendTask(e)}>
+            <form id="formNewTask" className="form needs-validation" onSubmit={(e) => sendTask(e)}>
                 <div className="form-control d-flex flex-column">
 
                     <div className="d-flex flex-column">

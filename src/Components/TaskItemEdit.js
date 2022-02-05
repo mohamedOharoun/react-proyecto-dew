@@ -1,7 +1,7 @@
 import { useState } from "react";
 export const TaskItemEdit = (task) => {
-    
-    const maxChars = 250;
+    const myStorage = window.localStorage;
+    const maxChars = 125;
     const [counter, setCounter] = useState(0);
     const [isInValid, setIsInValid] = useState(false);
     const [isDone, setIsDone] = useState(task.task.completed);
@@ -14,7 +14,7 @@ export const TaskItemEdit = (task) => {
         const url = 'http://localhost:3030/api/v1/tasks/' + task.task._id;
 
         const postHeaders = new Headers();
-        postHeaders.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWY2Y2Y2MjQ5ZGYzOGY0OGI0ODNmZjYiLCJuYW1lIjoiVXNlciA1IiwiaWF0IjoxNjQzNTY3MDY1LCJleHAiOjE2NDYxNTkwNjV9._fD8BVug_dBIunfkKNKx5mglbLqG5_32SgNUCB-ceOs');
+        postHeaders.append('Authorization', 'Bearer ' + myStorage.getItem('token'));
         postHeaders.append('Content-Type', 'application/json');
 
 
@@ -55,7 +55,7 @@ export const TaskItemEdit = (task) => {
 
             <div className="d-flex flex-column">
                 <label htmlFor="content" className="visually-hidden">Task Content</label>
-                <textarea value={content} rows="10" id={"contentEdit" + task.index} 
+                <textarea value={content} rows="5" id={"contentEdit" + task.index} 
                 className={"form-control"  + (isInValid ? " is-invalid" : "")} 
                 htmlFor="content"
                 onChange={(e) => {
