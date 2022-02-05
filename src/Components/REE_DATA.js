@@ -14,7 +14,8 @@ export const REE_DATA = () => {
 
     useEffect(() => {
         getPrices();
-    }, [prices]);
+        
+    }, []);
 
     return (<div className="col-lg-3 card mt-3">
         <div className="card-body">
