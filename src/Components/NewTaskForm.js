@@ -39,7 +39,7 @@ export const NewTaskForm = (item) => {
 
                     <div className="d-flex flex-column">
                         <label htmlFor="name" className="form-label align-self-center">Name</label>
-                        <input className="form-control" type="text" id="name" name="name" minLength={3} autoComplete="off"/>
+                        <input className="form-control" type="text" id="name" name="name" minLength={3} autoComplete="off" required/>
                         <div className="invalid-feedback">It can only be 250 characters long</div>
                     </div>
 

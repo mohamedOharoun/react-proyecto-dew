@@ -76,7 +76,7 @@ export const TaskItemEdit = (task) => {
             <br/>
 
             <div className="d-flex d-lg-column justify-content-between">
-                <button type="submit" className="btn btn-primary">Edit</button>
+                <button type="submit" className="btn btn-success">Save</button>
                 <button type="submit" className="btn btn-danger" onClick={(e) => cancelEdit(e)}>Cancel</button>
             </div>
             

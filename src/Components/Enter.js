@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Enter = (changeComponent) => {
+    const [credentials, setCredentials] = useState(false);
     const style = {width: '100%'};
     const myStorage = window.localStorage;
     const navigate = useNavigate();
@@ -26,17 +28,24 @@ export const Enter = (changeComponent) => {
                 body: JSON.stringify(data),
                 redirect: 'follow'
         })
-        .then(res => res.json())
+        .then(res => res.status === 200 ? res.json() : wrongCredentials(true))
         .catch(err => console.log(err));
 
-        myStorage.clear();
-        myStorage.setItem('token', res.token)
-        myStorage.setItem('name', res.user.name)
+        if(res){
+            myStorage.clear();
+            myStorage.setItem('token', res.token)
+            myStorage.setItem('name', res.user.name)
+        }
+        
 
         if(myStorage.getItem('token') && myStorage.getItem('token')){
             navigate('/');
         }
     };
+
+    const wrongCredentials = (state) => {
+        setCredentials(state);
+    }
     
     const register = (e) => {
         e.preventDefault();
@@ -60,6 +69,11 @@ export const Enter = (changeComponent) => {
                     </div>
                     
                     <button className="btn btn-primary mb-3">Login</button>
+
+                    <div className={"alert alert-danger alert-dismissible fade show col-8" + (credentials ? '' : ' d-none')} role="alert">
+                        Wrong Credentials
+                        <button type="button" className="btn-close" aria-label="Close" onClick={() => wrongCredentials(false)}></button>
+                    </div>
     
                     <button className="btn btn-link mb-5" onClick={(e) => register(e)}>No account? Register now</button>
                 </div>
